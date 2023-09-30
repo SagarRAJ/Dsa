@@ -53,4 +53,48 @@ whenever any element of the matrix is zero than we mark the specific row and col
 Than after the traversal of the matrix we again traverse it and see weather any of the element of the of the array created (row
 /column)is marked for specific element of the matrix .If marked than make the element zero .
 
+Alter - optimal solution
+Code:
+class Solution {
+    public void setZeroes(int[][] matrix) {
+       // int [] column =new int [matrix[0].length];-->matrix[0][..]
+       // int [] row =new int [matrix.length];-->matrix[..][0]
+       int col=1;
+        
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                     matrix[i][0]=0;
+                    if(j!=0)
+                    matrix[0][j]=0;
+                    else
+                    col=0;
+                }
+            }
+        }
+        for(int i=1;i<matrix.length;i++){
+            for(int j=1;j<matrix[0].length;j++){
+                if(matrix[i][0]==0 || matrix[0][j]==0){
+                    matrix[i][j]=0;
+                }
+
+            }
+        }
+        if(matrix[0][0]==0){
+            for(int i=0;i<matrix[0].length;i++){
+                matrix[0][i]=0;
+            }
+        }
+        if(col==0){
+            for(int i=0;i<matrix.length;i++){
+                matrix[i][0]=0;
+            }
+        }
+        
+    }
+}
+
+Des--
+Here what we have did is that we have made row and column array in matrix itself and avariable col for the common of row and column
+
 
